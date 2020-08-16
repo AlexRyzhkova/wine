@@ -9,5 +9,9 @@ export default async function fetchWine() {
     }
   );
   const response = await wineFetch.json();
-  return response.results;
+  const uniqueWines = response.results.filter(
+    (wine, index) =>
+      response.results.findIndex((other) => other.lwin === wine.lwin) === index
+  );
+  return uniqueWines;
 }
