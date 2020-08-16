@@ -3,18 +3,25 @@ import "./App.css";
 import fetchWine from "./api/wine";
 import List from "./components/List";
 import ListItem from "./components/ListItem";
+import LoadingScreen from "./components/LoadingScree";
 
 function App() {
   const [allWines, setAllWines] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(false);
+
   async function getWines() {
     const newWines = await fetchWine();
     setAllWines(newWines);
-    console.log(allWines);
+    setIsLoading(false);
   }
 
   useEffect(() => {
     getWines();
   }, []);
+
+  if (isLoading || allWines === null) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="App">
