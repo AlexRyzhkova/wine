@@ -8,6 +8,7 @@ import LoadingScreen from "./components/LoadingScree";
 function App() {
   const [allWines, setAllWines] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [query, setQuery] = React.useState("");
 
   async function getWines() {
     const newWines = await fetchWine();
@@ -22,13 +23,25 @@ function App() {
   if (isLoading || allWines === null) {
     return <LoadingScreen />;
   }
+  const filteredWines = allWines.filter((wine) => {
+    return wine.wine.toLowerCase().match(query.toLowerCase());
+  });
 
   return (
     <div className="App">
-      <header>Wine list</header>
+      <header className="header">
+        <h2>Wine list</h2>
+        <input
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          className="header__input"
+          placeholder="Search for your favorite wine"
+        />
+      </header>
+
       <main>
         <List>
-          {allWines?.map((wine) => {
+          {filteredWines?.map((wine) => {
             return (
               <ListItem key={wine.lwin} href={wine.href}>
                 {wine.wine}
