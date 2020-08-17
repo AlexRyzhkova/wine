@@ -3,7 +3,7 @@ import "./App.css";
 import fetchWine from "./api/wine";
 import List from "./components/List";
 import ListItem from "./components/ListItem";
-import LoadingScreen from "./components/LoadingScree";
+import LoadingScreen from "./components/LoadingScreen";
 
 function App() {
   const [allWines, setAllWines] = React.useState(null);
@@ -28,7 +28,7 @@ function App() {
   });
 
   return (
-    <div className="App">
+    <div className="app">
       <header className="header">
         <h2>Wine list</h2>
         <input
