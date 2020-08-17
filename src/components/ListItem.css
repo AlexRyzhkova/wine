@@ -1,14 +1,17 @@
 .listItem {
   display: flex;
-  padding: 10px;
-  border-bottom: 1px solid #bbb;
+  padding: 15px;
+  border-bottom: 1px solid #eeeeee;
   text-decoration: none;
-  color: inherit;
+  color: #36323f;
   align-items: center;
+  font-size: 0.9em;
 }
+
 .listItem > * {
   margin-right: 15px;
 }
+
 .listItem > *:last-child {
   margin-right: 0px;
 }
